@@ -16,7 +16,6 @@ function App() {
       return <Redirect to="/login" />;
     }
   };
-
   return (
     <div>
       <Switch>

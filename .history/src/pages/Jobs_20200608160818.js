@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Row, Col, Button, Container } from "react-bootstrap";
-
+const API_URL = process.env.REACT_APP_BACKEND_SERVER_URL;
 export default class Jobs extends Component {
   state = {
     jobList: [],
   };
   componentDidMount() {
-    console.log(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`);
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
-      .then((res) => {
-        const jobs = res.data;
-        this.setState({ jobList: jobs });
-      });
+    axios.get(`${API_URL}/jobs`).then((res) => {
+      const jobs = res.data;
+      this.setState({ jobList: jobs });
+    });
   }
   render() {
     return (

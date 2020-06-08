@@ -8,12 +8,10 @@ export default class Jobs extends Component {
   };
   componentDidMount() {
     console.log(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`);
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
-      .then((res) => {
-        const jobs = res.data;
-        this.setState({ jobList: jobs });
-      });
+    axios.get(`${API_URL}/jobs`).then((res) => {
+      const jobs = res.data;
+      this.setState({ jobList: jobs });
+    });
   }
   render() {
     return (

@@ -7,6 +7,7 @@ import Jobs from "./pages/Jobs";
 import Login from "./pages/Login";
 import Detail from "./pages/Detail";
 
+console.log(process.env.REACT_APP_BACKEND_SERVER_URL);
 function App() {
   const [user, setUser] = useState(true);
   const ProtectedRoute = (props) => {

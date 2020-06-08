@@ -17,7 +17,7 @@
         "react-scripts": "3.4.1"
     },
     "scripts": {
-        "dev": "json-server --watch db.json -p 3001 && react-scripts start",
+        "dev": "json-server --env.API_URL=http://localhost:3001 --watch db.json -p 3001 && start react-scripts start",
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",

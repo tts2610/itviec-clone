@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const url = process.env.REACT_APP_BACKEND_SERVER_URL;
+const API_KEY = process.env.REACT_APP_APIKEY;
 
 export default function Detail() {
   const { id } = useParams();

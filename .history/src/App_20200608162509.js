@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Jobs from "./pages/Jobs";
+import Jobs from "./Jobs";
 import Login from "./pages/Login";
 import Detail from "./pages/Detail";
 
@@ -16,7 +16,6 @@ function App() {
       return <Redirect to="/login" />;
     }
   };
-
   return (
     <div>
       <Switch>
