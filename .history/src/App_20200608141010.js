@@ -10,7 +10,7 @@ import Detail from "./pages/Detail";
 function App() {
   const [user, setUser] = useState(true);
   const ProtectedRoute = (props) => {
-    if (user === true) {
+    if (user.isAuthenticated === true) {
       return <Route {...props} />;
     } else {
       return <Redirect to="/login" />;
@@ -22,7 +22,6 @@ function App() {
         <ProtectedRoute
           path="/jobs/:id"
           render={(props) => <Detail {...props} />}
-          // component={Detail}
         />
         <Route path="/jobs/:id" component={Detail} />
         <Route path="/jobs" component={Jobs} />

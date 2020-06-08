@@ -40,7 +40,7 @@
 .desRow div ul li {
     display: block;
     white-space: nowrap;
-    width: 750px;
+    width: 550px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

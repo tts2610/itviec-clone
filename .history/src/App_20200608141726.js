@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Detail from "./pages/Detail";
 
 function App() {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const ProtectedRoute = (props) => {
     if (user === true) {
       return <Route {...props} />;

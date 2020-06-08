@@ -37,10 +37,6 @@
     }
 }
 
-.desRow div ul li {
-    display: block;
-    white-space: nowrap;
-    width: 750px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.desRow {
+    width: 40%;
 }
