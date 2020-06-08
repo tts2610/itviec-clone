@@ -55,7 +55,7 @@ export default class Jobs extends Component {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-end",
+                        alignItems: "center",
                       }}
                     >
                       <div>{job.city}</div>
@@ -71,7 +71,7 @@ export default class Jobs extends Component {
                       ))}
                     </div>
 
-                    <div className="mr-3">
+                    <div style={{ textAlign: "right" }}>
                       <Moment fromNow>{job.time}</Moment>
                     </div>
                   </Row>

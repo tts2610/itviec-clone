@@ -55,7 +55,7 @@ export default class Jobs extends Component {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        alignItems: "flex-end",
+                        alignItems: "center",
                       }}
                     >
                       <div>{job.city}</div>

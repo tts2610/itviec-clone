@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Row, Col, Button, Container } from "react-bootstrap";
-import Moment from "react-moment";
 
 export default class Jobs extends Component {
   state = {
@@ -23,17 +22,13 @@ export default class Jobs extends Component {
           {this.state.jobList.map((job, index) => {
             return (
               <Row key={index} className="mb-5">
-                <Col sm={3}>
+                <Col sm={2}>
                   <img src={process.env.PUBLIC_URL + `${job.img}`} alt="" />
                 </Col>
-                <Col sm={9}>
+                <Col sm={10}>
                   <Row style={{ justifyContent: "space-between" }}>
                     <h1>{job.title}</h1>
-                    {job.isHotjob && (
-                      <Button variant="warning" className="mr-3">
-                        Hot job
-                      </Button>
-                    )}
+                    <div>Hot job</div>
                   </Row>
                   <Row>
                     <h2>${job.salary}</h2>
@@ -50,14 +45,7 @@ export default class Jobs extends Component {
                       </ul>
                     </div>
 
-                    <div
-                      className="mr-3"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-end",
-                      }}
-                    >
+                    <div>
                       <div>{job.city}</div>
                       <div>district {job.district}</div>
                     </div>
@@ -71,9 +59,7 @@ export default class Jobs extends Component {
                       ))}
                     </div>
 
-                    <div className="mr-3">
-                      <Moment fromNow>{job.time}</Moment>
-                    </div>
+                    <div>{job.time}</div>
                   </Row>
                 </Col>
               </Row>

@@ -23,17 +23,13 @@ export default class Jobs extends Component {
           {this.state.jobList.map((job, index) => {
             return (
               <Row key={index} className="mb-5">
-                <Col sm={3}>
+                <Col sm={2}>
                   <img src={process.env.PUBLIC_URL + `${job.img}`} alt="" />
                 </Col>
-                <Col sm={9}>
+                <Col sm={10}>
                   <Row style={{ justifyContent: "space-between" }}>
                     <h1>{job.title}</h1>
-                    {job.isHotjob && (
-                      <Button variant="warning" className="mr-3">
-                        Hot job
-                      </Button>
-                    )}
+                    <div>Hot job</div>
                   </Row>
                   <Row>
                     <h2>${job.salary}</h2>
@@ -50,14 +46,7 @@ export default class Jobs extends Component {
                       </ul>
                     </div>
 
-                    <div
-                      className="mr-3"
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-end",
-                      }}
-                    >
+                    <div>
                       <div>{job.city}</div>
                       <div>district {job.district}</div>
                     </div>
@@ -71,8 +60,9 @@ export default class Jobs extends Component {
                       ))}
                     </div>
 
-                    <div className="mr-3">
-                      <Moment fromNow>{job.time}</Moment>
+                    <div>
+                      <Moment fromNow>1976-04-19T12:59-0500</Moment>
+                      {job.time}
                     </div>
                   </Row>
                 </Col>

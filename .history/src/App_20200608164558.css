@@ -38,11 +38,9 @@
 }
 
 .desRow div ul li {
-    width: 650px;
-    text-overflow: ellipsis;
-    list-style-type: circle;
-}
-
-Container {
-    max-width: 50% !important;
+    /* display: block;
+    white-space: nowrap;
+    width: 750px;
+    overflow: hidden;
+    text-overflow: ellipsis; */
 }
