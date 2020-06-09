@@ -69,7 +69,7 @@ export default function Detail() {
                   </div>
                 </Row>
                 <Row>
-                  <h6 className="text-secondary mt-5">
+                  <h6 className="text-secondary mt-4">
                     <i className="far fa-dollar-sign"></i> {job.salary}
                   </h6>
                 </Row>
@@ -120,7 +120,7 @@ export default function Detail() {
                     </ul>
                   </div>
                 </Row>
-                <Row className="mt-5">
+                <Row className="mt-3">
                   <Button style={{ width: "100%" }} variant="danger">
                     Apply now
                   </Button>

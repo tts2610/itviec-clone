@@ -61,15 +61,6 @@ Container {
 
 .has-search .form-control {
     padding-left: 2.375rem;
-    height: 60px;
-    width: 450px !important;
-}
-
-.cityBox {
-    height: 60px;
-    width: 250px;
-    background-color: white;
-    border-radius: 4px;
 }
 
 .has-search .form-control-feedback {

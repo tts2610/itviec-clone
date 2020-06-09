@@ -74,12 +74,8 @@ export default function Jobs() {
   return (
     <div>
       <Navbar
-        style={{
-          height: "250px",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "black",
-        }}
+        style={{ height: "250px", display: "flex", flexDirection: "column" }}
+        bg="dark"
         variant="dark"
       >
         <Row
@@ -97,11 +93,10 @@ export default function Jobs() {
               alt=""
             />
           </Navbar.Brand>
-          <Nav style={{ color: "white", fontWeight: "500" }}>
-            <Nav.Link href="/">All Jobs</Nav.Link>
-            <Nav.Link href="/">IT Companies</Nav.Link>
-            <Nav.Link href="/">Blog</Nav.Link>
-            <Nav.Link href="/">Sign in</Nav.Link>
+          <Nav>
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
         </Row>
         <Row>
@@ -117,39 +112,14 @@ export default function Jobs() {
               Search
             </Button>
           </Form> */}
-          <Form onSubmit={handleSearch} inline>
-            <div className="form-group has-search">
-              <span
-                className="fa fa-search form-control-feedback"
-                style={{ marginTop: "2px" }}
-              ></span>
-              <input
-                value={keyword}
-                onChange={(e) => handleOnChange(e)}
-                type="text"
-                placeholder="Search"
-                className="form-control"
-              ></input>
-            </div>
-            <div
-              className="px-3 ml-3 cityBox"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                color: "#6c757d",
-              }}
-            >
-              <i className="fal fa-map-marker-check mr-2"></i>Ho Chi Minh city
-            </div>
-            <Button
-              className="ml-3"
-              type="submit"
-              variant="danger"
-              style={{ height: "60px", width: "150px", fontWeight: "bolder" }}
-            >
-              Search
-            </Button>
-          </Form>
+          <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+            ></input>
+          </div>
         </Row>
       </Navbar>
       <Container className="jobRows my-5">

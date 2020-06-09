@@ -97,11 +97,10 @@ export default function Jobs() {
               alt=""
             />
           </Navbar.Brand>
-          <Nav style={{ color: "white", fontWeight: "500" }}>
-            <Nav.Link href="/">All Jobs</Nav.Link>
-            <Nav.Link href="/">IT Companies</Nav.Link>
-            <Nav.Link href="/">Blog</Nav.Link>
-            <Nav.Link href="/">Sign in</Nav.Link>
+          <Nav>
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
         </Row>
         <Row>

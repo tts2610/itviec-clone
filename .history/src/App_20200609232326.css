@@ -59,10 +59,10 @@ Container {
     max-width: 50% !important;
 }
 
-.has-search .form-control {
+.has-search {
     padding-left: 2.375rem;
     height: 60px;
-    width: 450px !important;
+    width: 450px;
 }
 
 .cityBox {

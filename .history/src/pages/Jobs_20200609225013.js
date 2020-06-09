@@ -74,22 +74,11 @@ export default function Jobs() {
   return (
     <div>
       <Navbar
-        style={{
-          height: "250px",
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "black",
-        }}
+        style={{ height: "250px", display: "flex", flexDirection: "column" }}
+        bg="dark"
         variant="dark"
       >
-        <Row
-          className="mb-5"
-          style={{
-            width: "80%",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
+        <Row className="mb-5" style={{ width: "80%", alignItems: "center" }}>
           <Navbar.Brand href="/">
             <img
               height="50"
@@ -97,15 +86,14 @@ export default function Jobs() {
               alt=""
             />
           </Navbar.Brand>
-          <Nav style={{ color: "white", fontWeight: "500" }}>
-            <Nav.Link href="/">All Jobs</Nav.Link>
-            <Nav.Link href="/">IT Companies</Nav.Link>
-            <Nav.Link href="/">Blog</Nav.Link>
-            <Nav.Link href="/">Sign in</Nav.Link>
+          <Nav>
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
           </Nav>
         </Row>
         <Row>
-          {/* <Form onSubmit={handleSearch} inline>
+          <Form onSubmit={handleSearch} inline>
             <FormControl
               value={keyword}
               onChange={(e) => handleOnChange(e)}
@@ -114,39 +102,6 @@ export default function Jobs() {
               className="mr-sm-2"
             />
             <Button type="submit" variant="outline-info">
-              Search
-            </Button>
-          </Form> */}
-          <Form onSubmit={handleSearch} inline>
-            <div className="form-group has-search">
-              <span
-                className="fa fa-search form-control-feedback"
-                style={{ marginTop: "2px" }}
-              ></span>
-              <input
-                value={keyword}
-                onChange={(e) => handleOnChange(e)}
-                type="text"
-                placeholder="Search"
-                className="form-control"
-              ></input>
-            </div>
-            <div
-              className="px-3 ml-3 cityBox"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                color: "#6c757d",
-              }}
-            >
-              <i className="fal fa-map-marker-check mr-2"></i>Ho Chi Minh city
-            </div>
-            <Button
-              className="ml-3"
-              type="submit"
-              variant="danger"
-              style={{ height: "60px", width: "150px", fontWeight: "bolder" }}
-            >
               Search
             </Button>
           </Form>

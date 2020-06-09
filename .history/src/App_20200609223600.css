@@ -58,28 +58,3 @@ body {
 Container {
     max-width: 50% !important;
 }
-
-.has-search .form-control {
-    padding-left: 2.375rem;
-    height: 60px;
-    width: 450px !important;
-}
-
-.cityBox {
-    height: 60px;
-    width: 250px;
-    background-color: white;
-    border-radius: 4px;
-}
-
-.has-search .form-control-feedback {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    width: 2.375rem;
-    height: 2.375rem;
-    line-height: 2.375rem;
-    text-align: center;
-    pointer-events: none;
-    color: #aaa;
-}

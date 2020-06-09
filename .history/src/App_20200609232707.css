@@ -83,3 +83,7 @@ Container {
     pointer-events: none;
     color: #aaa;
 }
+
+.navbar-nav {
+    color: whitesmoke;
+}

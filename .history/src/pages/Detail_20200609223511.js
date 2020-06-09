@@ -48,6 +48,7 @@ export default function Detail() {
             justifyContent: "center",
             alignItems: "center",
             height: "100vh",
+            width: "80%",
           }}
         >
           <div className="detail-content py-5 px-5">
@@ -69,7 +70,7 @@ export default function Detail() {
                   </div>
                 </Row>
                 <Row>
-                  <h6 className="text-secondary mt-5">
+                  <h6 className="text-secondary mt-3">
                     <i className="far fa-dollar-sign"></i> {job.salary}
                   </h6>
                 </Row>
@@ -120,7 +121,7 @@ export default function Detail() {
                     </ul>
                   </div>
                 </Row>
-                <Row className="mt-5">
+                <Row className="mt-3">
                   <Button style={{ width: "100%" }} variant="danger">
                     Apply now
                   </Button>

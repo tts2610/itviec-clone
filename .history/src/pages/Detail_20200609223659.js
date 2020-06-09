@@ -120,7 +120,7 @@ export default function Detail() {
                     </ul>
                   </div>
                 </Row>
-                <Row className="mt-5">
+                <Row className="mt-3">
                   <Button style={{ width: "100%" }} variant="danger">
                     Apply now
                   </Button>

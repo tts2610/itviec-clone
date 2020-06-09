@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Button, Spinner, } from "react-bootstrap";
 import Moment from "react-moment";
 
 export default function Detail() {
@@ -16,40 +16,24 @@ export default function Detail() {
         console.log(jobs);
         setJob(jobs);
       });
-
-    setTimeout(() => setIsLoading(false), 2000);
   };
 
   useEffect(() => {
     getDetailData();
   }, []);
-  if (job != null) {
-    if (isLoading) {
+  if (job != null)
+    if(isLoading){
       return (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <Spinner animation="border" role="status">
             <span className="sr-only"></span>
           </Spinner>
         </div>
-      );
+      )
     }
     return (
       <div>
-        <Container
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
+        <Container className="mt-5">
           <div className="detail-content py-5 px-5">
             <Row>
               <Col sm={3}>
@@ -69,7 +53,7 @@ export default function Detail() {
                   </div>
                 </Row>
                 <Row>
-                  <h6 className="text-secondary mt-5">
+                  <h6 className="text-secondary mt-3">
                     <i className="far fa-dollar-sign"></i> {job.salary}
                   </h6>
                 </Row>
@@ -120,7 +104,7 @@ export default function Detail() {
                     </ul>
                   </div>
                 </Row>
-                <Row className="mt-5">
+                <Row className="mt-3">
                   <Button style={{ width: "100%" }} variant="danger">
                     Apply now
                   </Button>
@@ -131,7 +115,7 @@ export default function Detail() {
         </Container>
       </div>
     );
-  } else {
+  else {
     return <></>;
   }
 }

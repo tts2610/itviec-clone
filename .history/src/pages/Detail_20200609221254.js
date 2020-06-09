@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Moment from "react-moment";
 
 export default function Detail() {
   const [job, setJob] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const getDetailData = () => {
     axios
@@ -16,40 +15,15 @@ export default function Detail() {
         console.log(jobs);
         setJob(jobs);
       });
-
-    setTimeout(() => setIsLoading(false), 2000);
   };
 
   useEffect(() => {
     getDetailData();
   }, []);
-  if (job != null) {
-    if (isLoading) {
-      return (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-          <Spinner animation="border" role="status">
-            <span className="sr-only"></span>
-          </Spinner>
-        </div>
-      );
-    }
+  if (job != null)
     return (
       <div>
-        <Container
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
+        <Container className="mt-5">
           <div className="detail-content py-5 px-5">
             <Row>
               <Col sm={3}>
@@ -62,29 +36,23 @@ export default function Detail() {
                 <Row style={{ justifyContent: "space-between" }}>
                   <div>
                     {job.tags.map((tag, index) => (
-                      <Button className="mr-3" key={index} variant="danger">
+                      <Button className="ml-3" key={index} variant="danger">
                         {tag}
                       </Button>
                     ))}
                   </div>
                 </Row>
                 <Row>
-                  <h6 className="text-secondary mt-5">
-                    <i className="far fa-dollar-sign"></i> {job.salary}
-                  </h6>
+                  <h4 className="text-muted mt-3">${job.salary}</h4>
                 </Row>
-                <Row style={{ marginBottom: "-4px" }}>
-                  <h6 className="text-secondary">
-                    <i class="fal fa-map-marker-check"></i> District{" "}
-                    {job.district}, {job.city} city
-                  </h6>
+                <Row>
+                  <h4 className="text-muted">
+                    District {job.district}, {job.city}
+                  </h4>
                 </Row>
-                <Row className="mb-4">
-                  <div style={{ color: "blue" }}>
-                    <i class="fad fa-calendar"></i>{" "}
-                    <Moment fromNow>
-                      <h4 className="text-secondary">{job.time}</h4>
-                    </Moment>
+                <Row>
+                  <div className="mr-3">
+                    <Moment fromNow>{job.time}</Moment>
                   </div>
                 </Row>
                 <Row>
@@ -119,11 +87,15 @@ export default function Detail() {
                       })}
                     </ul>
                   </div>
-                </Row>
-                <Row className="mt-5">
-                  <Button style={{ width: "100%" }} variant="danger">
-                    Apply now
-                  </Button>
+
+                  <div
+                    className="mr-3"
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                    }}
+                  ></div>
                 </Row>
               </Col>
             </Row>
@@ -131,7 +103,7 @@ export default function Detail() {
         </Container>
       </div>
     );
-  } else {
+  else {
     return <></>;
   }
 }
