@@ -17,10 +17,11 @@ const QUERYSTR_PREFIX = "q";
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-let originalList = [];
+
 export default function Jobs() {
   let history = useHistory();
   let query = useQuery();
+  const [originalList, setoriginalList] = useState([]);
   const [jobList, setJobList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let [keyword, setKeyword] = useState(query.get(QUERYSTR_PREFIX));
@@ -29,18 +30,20 @@ export default function Jobs() {
     setIsLoading(true);
     let filteredJobs = [];
     if (e) {
+      console.log("aaa");
       e.preventDefault();
       history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
     }
 
     if (keyword) {
-      if (jobList.length === 0) {
-        setJobList(originalList);
-      }
-      console.log(originalList);
-      filteredJobs = originalList.filter((job) =>
+      console.log(keyword);
+      setoriginalList(jobList);
+      // console.log(jobList);
+      filteredJobs = jobList.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
+      console.log("bbb");
+      console.log(filteredJobs);
       setJobList(filteredJobs);
     }
     setTimeout(() => setIsLoading(false), 1000);
@@ -64,12 +67,14 @@ export default function Jobs() {
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
       .then((res) => {
         const jobs = res.data;
-        originalList = jobs;
-        setJobList(jobs);
-        handleSearch();
+        console.log(jobs);
+        setJobList((prev) => [...prev, jobs]);
+      })
+      .then(() => {
+        setTimeout(() => handleSearch(), 2000);
       });
     setTimeout(() => setIsLoading(false), 1000);
-  }, []);
+  });
 
   return (
     <div>

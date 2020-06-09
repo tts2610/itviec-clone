@@ -34,11 +34,12 @@ export default function Jobs() {
     }
 
     if (keyword) {
+      // setoriginalList(jobList);
+      // console.log(jobList);
       if (jobList.length === 0) {
         setJobList(originalList);
       }
-      console.log(originalList);
-      filteredJobs = originalList.filter((job) =>
+      filteredJobs = jobList.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
       setJobList(filteredJobs);
@@ -66,7 +67,6 @@ export default function Jobs() {
         const jobs = res.data;
         originalList = jobs;
         setJobList(jobs);
-        handleSearch();
       });
     setTimeout(() => setIsLoading(false), 1000);
   }, []);

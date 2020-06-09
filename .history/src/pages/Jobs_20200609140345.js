@@ -34,7 +34,10 @@ export default function Jobs() {
     }
 
     if (keyword) {
+      // setoriginalList(jobList);
+      // console.log(jobList);
       if (jobList.length === 0) {
+        alert(originalList);
         setJobList(originalList);
       }
       console.log(originalList);
