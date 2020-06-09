@@ -22,16 +22,16 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path="*" component={FourOhFourPage} />
         <ProtectedRoute
           path="/jobs/:id"
           render={(props) => <Detail {...props} />}
           // component={Detail}
         />
         {/* <Route path="/jobs/:id" component={Detail} /> */}
-        <Route path="/jobs" exact={true} component={Jobs} />
+        <Route path="/jobs" component={Jobs} />
         <Route path="/login" component={Login} />
-        <Route path="/" exact={true} component={Jobs} />
-        <Route path="*" exact={true} component={FourOhFourPage} />
+        <Route path="/" component={Jobs} />
       </Switch>
     </div>
   );

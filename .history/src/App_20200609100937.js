@@ -28,10 +28,9 @@ function App() {
           // component={Detail}
         />
         {/* <Route path="/jobs/:id" component={Detail} /> */}
-        <Route path="/jobs" exact={true} component={Jobs} />
+        <Route path="/jobs" component={Jobs} />
         <Route path="/login" component={Login} />
-        <Route path="/" exact={true} component={Jobs} />
-        <Route path="*" exact={true} component={FourOhFourPage} />
+        <Route exac path="/" component={Jobs} />
       </Switch>
     </div>
   );
