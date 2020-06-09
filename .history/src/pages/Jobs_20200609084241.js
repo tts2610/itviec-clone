@@ -33,7 +33,7 @@ export default function Jobs() {
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
       console.log(filteredJobs);
-      setJobList(filteredJobs);
+      setJobList([]);
     }
   };
   const [jobList, setJobList] = useState([]);

@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect } from "react";
 import axios from "axios";
 import {
   Row,
@@ -11,44 +11,48 @@ import {
   FormControl,
 } from "react-bootstrap";
 import Moment from "react-moment";
-import { useHistory, useLocation } from "react-router-dom";
 
 const QUERYSTR_PREFIX = "q";
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
-
 export default function Jobs() {
-  let history = useHistory();
-  let query = useQuery();
-  const handleSearch = (e) => {
-    let filteredJobs = [];
-
-    e.preventDefault();
-    history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
-
-    if (keyword) {
-      filteredJobs = jobList.filter((job) =>
-        job.title.toLowerCase().includes(keyword.toLowerCase())
+  handleSearch = (e) => {
+    let filteredJobs = this.state.jobList;
+    if (e) {
+      e.preventDefault();
+      history.push(
+        `/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(this.state.keyword)}`
       );
-      console.log(filteredJobs);
-      setJobList(filteredJobs);
     }
+    if (this.state.keyword) {
+      alert(this.state.keyword);
+      filteredJobs = this.state.jobList.filter((job) =>
+        job.title.toLowerCase().includes(this.state.keyword.toLowerCase())
+      );
+    }
+    this.setState({ jobList: filteredJobs });
   };
-  const [jobList, setJobList] = useState([]);
-  let [keyword, setKeyword] = useState("");
-
+  state = {
+    jobList: [],
+    keyword: "",
+  };
+  jobSelect = (job) => {
+    history.push(`/jobs/${job.id}`);
+  };
   useEffect(() => {
-    // handleSearch();
-    console.log("aaa");
+    this.handleSearch();
     axios
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
       .then((res) => {
         const jobs = res.data;
-        setJobList(jobs);
+        this.setState({ jobList: jobs });
       });
-  }, []);
+    history.listen((location, action) => {
+      console.log(
+        `The current URL is ${location.pathname}${location.search}${location.hash}`
+      );
+      console.log(`The last navigation action was ${action}`);
+    });
+  });
 
   return (
     <div>
@@ -60,25 +64,19 @@ export default function Jobs() {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
         <Form inline>
-          <FormControl
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            type="text"
-            placeholder="Search"
-            className="mr-sm-2"
-          />
-          <Button variant="outline-info" onClick={handleSearch}>
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          <Button variant="outline-info" onClick={this.handleSearch}>
             Search
           </Button>
         </Form>
       </Navbar>
       <Container className="jobRows my-5">
-        {jobList.map((job, index) => {
+        {this.state.jobList.map((job, index) => {
           return (
             <Row
               key={index}
               className="mb-5 job"
-              onClick={() => history.push(`/jobs/${job.id}`)}
+              onClick={() => this.jobSelect(job)}
               style={{ cursor: "pointer" }}
             >
               <Col sm={3}>

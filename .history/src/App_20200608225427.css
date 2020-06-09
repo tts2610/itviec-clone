@@ -3,10 +3,6 @@
     background-color: #e9e9e9 !important;
 }
 
-body {
-    background-color: #e9e9e9 !important;
-}
-
 .App-logo {
     height: 40vmin;
     pointer-events: none;
@@ -49,8 +45,13 @@ body {
 }
 
 .detail-content {
-    min-height: 550px;
-    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    /* this is half the height of your div*/
+    margin-left: -100px;
+    /*this is half of width of your div*/
 }
 
 Container {

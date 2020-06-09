@@ -10,7 +10,6 @@ import Detail from "./pages/Detail";
 function App() {
   const [user, setUser] = useState(true);
   const ProtectedRoute = (props) => {
-    alert("aaaa");
     if (user === true) {
       return <Route {...props} />;
     } else {
@@ -21,12 +20,12 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        {/* <ProtectedRoute
+        <ProtectedRoute
           path="/jobs/:id"
           render={(props) => <Detail {...props} />}
           // component={Detail}
-        /> */}
-        <Route path="/jobs/:id" component={Detail} />
+        />
+        {/* <Route path="/jobs/:id" component={Detail} /> */}
         <Route path="/jobs" component={Jobs} />
         <Route path="/login" component={Login} />
         <Route path="/" component={Jobs} />

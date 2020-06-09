@@ -23,32 +23,36 @@ export default function Jobs() {
   let history = useHistory();
   let query = useQuery();
   const handleSearch = (e) => {
-    let filteredJobs = [];
-
-    e.preventDefault();
-    history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
-
+    let filteredJobs = jobList;
+    if (e) {
+      e.preventDefault();
+      history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
+    }
     if (keyword) {
       filteredJobs = jobList.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
-      console.log(filteredJobs);
-      setJobList(filteredJobs);
     }
+    setJobList(filteredJobs);
   };
   const [jobList, setJobList] = useState([]);
-  let [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    // handleSearch();
-    console.log("aaa");
+    handleSearch();
     axios
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
       .then((res) => {
         const jobs = res.data;
         setJobList(jobs);
       });
-  }, []);
+    // history.listen((location, action) => {
+    //   console.log(
+    //     `The current URL is ${location.pathname}${location.search}${location.hash}`
+    //   );
+    //   console.log(`The last navigation action was ${action}`);
+    // });
+  });
 
   return (
     <div>
@@ -60,14 +64,8 @@ export default function Jobs() {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
         <Form inline>
-          <FormControl
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            type="text"
-            placeholder="Search"
-            className="mr-sm-2"
-          />
-          <Button variant="outline-info" onClick={handleSearch}>
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          <Button variant="outline-info" onClick=(() => handleSearch})>
             Search
           </Button>
         </Form>

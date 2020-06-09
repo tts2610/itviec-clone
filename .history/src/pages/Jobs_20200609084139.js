@@ -33,7 +33,7 @@ export default function Jobs() {
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
       console.log(filteredJobs);
-      setJobList(filteredJobs);
+      setJobList([]);
     }
   };
   const [jobList, setJobList] = useState([]);
@@ -41,14 +41,13 @@ export default function Jobs() {
 
   useEffect(() => {
     // handleSearch();
-    console.log("aaa");
     axios
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
       .then((res) => {
         const jobs = res.data;
         setJobList(jobs);
       });
-  }, []);
+  });
 
   return (
     <div>

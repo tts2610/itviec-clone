@@ -11,44 +11,46 @@ import {
   FormControl,
 } from "react-bootstrap";
 import Moment from "react-moment";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const QUERYSTR_PREFIX = "q";
 
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
-
 export default function Jobs() {
   let history = useHistory();
-  let query = useQuery();
-  const handleSearch = (e) => {
-    let filteredJobs = [];
-
-    e.preventDefault();
-    history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
-
-    if (keyword) {
-      filteredJobs = jobList.filter((job) =>
-        job.title.toLowerCase().includes(keyword.toLowerCase())
-      );
-      console.log(filteredJobs);
-      setJobList(filteredJobs);
-    }
-  };
+  // handleSearch = (e) => {
+  //   let filteredJobs = this.state.jobList;
+  //   if (e) {
+  //     e.preventDefault();
+  //     history.push(
+  //       `/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(this.state.keyword)}`
+  //     );
+  //   }
+  //   if (this.state.keyword) {
+  //     alert(this.state.keyword);
+  //     filteredJobs = this.state.jobList.filter((job) =>
+  //       job.title.toLowerCase().includes(this.state.keyword.toLowerCase())
+  //     );
+  //   }
+  //   this.setState({ jobList: filteredJobs });
+  // };
   const [jobList, setJobList] = useState([]);
-  let [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
-    // handleSearch();
-    console.log("aaa");
+    // this.handleSearch();
     axios
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
       .then((res) => {
         const jobs = res.data;
         setJobList(jobs);
       });
-  }, []);
+    // history.listen((location, action) => {
+    //   console.log(
+    //     `The current URL is ${location.pathname}${location.search}${location.hash}`
+    //   );
+    //   console.log(`The last navigation action was ${action}`);
+    // });
+  });
 
   return (
     <div>
@@ -60,16 +62,8 @@ export default function Jobs() {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
         <Form inline>
-          <FormControl
-            value={keyword}
-            onChange={(e) => setKeyword(e.target.value)}
-            type="text"
-            placeholder="Search"
-            className="mr-sm-2"
-          />
-          <Button variant="outline-info" onClick={handleSearch}>
-            Search
-          </Button>
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          <Button variant="outline-info">Search</Button>
         </Form>
       </Navbar>
       <Container className="jobRows my-5">

@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Container } from "react-bootstrap";
 
+const url = process.env.REACT_APP_BACKEND_SERVER_URL;
+
 export default function Detail() {
   const { id } = useParams();
   const getDetailData = async () => {

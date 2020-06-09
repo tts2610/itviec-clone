@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Container } from "react-bootstrap";
 
+const url = process.env.REACT_APP_BACKEND_SERVER_URL;
+
 export default function Detail() {
   const { id } = useParams();
   const getDetailData = async () => {
@@ -17,11 +19,10 @@ export default function Detail() {
     getDetailData();
   });
   return (
-    <div style={{ backgroundColor: "#e9e9e9" }}>
+    <div>
+      <h1>This is detail page</h1>
+      <h2>This is id {id}</h2>
       <Container>
-        <h1>This is detail page</h1>
-        <h2>This is id {id}</h2>
-
         <div className="detail-content"></div>
       </Container>
     </div>

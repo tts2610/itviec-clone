@@ -23,32 +23,31 @@ export default function Jobs() {
   let history = useHistory();
   let query = useQuery();
   const handleSearch = (e) => {
-    let filteredJobs = [];
-
-    e.preventDefault();
-    history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
-
+    let filteredJobs = jobList;
+    if (e) {
+      e.preventDefault();
+      history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
+    }
     if (keyword) {
       filteredJobs = jobList.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
       console.log(filteredJobs);
-      setJobList(filteredJobs);
     }
+    setJobList(filteredJobs);
   };
   const [jobList, setJobList] = useState([]);
-  let [keyword, setKeyword] = useState("");
+  let [keyword, setKeyword] = useState(query.get(QUERYSTR_PREFIX));
 
   useEffect(() => {
     // handleSearch();
-    console.log("aaa");
     axios
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
       .then((res) => {
         const jobs = res.data;
         setJobList(jobs);
       });
-  }, []);
+  });
 
   return (
     <div>
