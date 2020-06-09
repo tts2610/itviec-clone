@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import axios from "axios";
 import {
   Row,
@@ -8,6 +8,7 @@ import {
   Navbar,
   Nav,
   Form,
+  FormControl,
   Spinner,
 } from "react-bootstrap";
 import Moment from "react-moment";
@@ -151,7 +152,7 @@ export default function Jobs() {
           </Form>
         </Row>
       </Navbar>
-      <Container className="jobRows  mb-5">
+      <Container className="jobRows my-5">
         {isLoading ? (
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Spinner animation="border" role="status">
@@ -164,7 +165,7 @@ export default function Jobs() {
               <Row
                 key={index}
                 id="rowJob"
-                className="job"
+                className="mb-5 job"
                 onClick={() => history.push(`/jobs/${job.id}`)}
                 style={{ cursor: "pointer" }}
               >

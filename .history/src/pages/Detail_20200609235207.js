@@ -22,7 +22,7 @@ export default function Detail() {
 
   useEffect(() => {
     getDetailData();
-  }, []);
+  }, [getDetailData]);
   if (job != null) {
     if (isLoading) {
       return (
