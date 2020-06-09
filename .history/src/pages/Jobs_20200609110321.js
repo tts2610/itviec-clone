@@ -23,7 +23,6 @@ export default function Jobs() {
   let [keyword, setKeyword] = useState("");
 
   const handleSearch = (e) => {
-    setIsLoading(true);
     let filteredJobs = [];
 
     e.preventDefault();
@@ -37,15 +36,12 @@ export default function Jobs() {
       console.log(filteredJobs);
       setJobList(filteredJobs);
     }
-    setTimeout(() => setIsLoading(false), 1000);
   };
 
   const handleOnChange = (e) => {
     if (e.target.value === "") {
-      setIsLoading(true);
       setJobList(originalList);
       history.replace("/jobs/");
-      setTimeout(() => setIsLoading(false), 1000);
     }
     setKeyword(e.target.value);
   };
@@ -58,7 +54,7 @@ export default function Jobs() {
         const jobs = res.data;
         setJobList(jobs);
       });
-    setTimeout(() => setIsLoading(false), 1000);
+    setTimeout(() => setIsLoading(false), 2000);
   }, []);
 
   return (
@@ -83,21 +79,22 @@ export default function Jobs() {
           </Button>
         </Form>
       </Navbar>
-      <Container className="jobRows my-5">
+      <Container
+        className="jobRows my-5"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
         {isLoading ? (
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <Spinner
-              animation="border"
-              role="status"
-              // style={{
-              //   display: "flex",
-              //   justifyContent: "center",
-              //   flexDirection: "column",
-              // }}
-            >
-              <span className="sr-only"></span>
-            </Spinner>
-          </div>
+          <Spinner
+            animation="border"
+            role="status"
+            // style={{
+            //   display: "flex",
+            //   justifyContent: "center",
+            //   flexDirection: "column",
+            // }}
+          >
+            <span className="sr-only"></span>
+          </Spinner>
         ) : (
           jobList.map((job, index) => {
             return (

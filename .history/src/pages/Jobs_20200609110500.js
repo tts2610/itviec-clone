@@ -37,15 +37,13 @@ export default function Jobs() {
       console.log(filteredJobs);
       setJobList(filteredJobs);
     }
-    setTimeout(() => setIsLoading(false), 1000);
+    setTimeout(() => setIsLoading(false), 2000);
   };
 
   const handleOnChange = (e) => {
     if (e.target.value === "") {
-      setIsLoading(true);
       setJobList(originalList);
       history.replace("/jobs/");
-      setTimeout(() => setIsLoading(false), 1000);
     }
     setKeyword(e.target.value);
   };
@@ -58,7 +56,7 @@ export default function Jobs() {
         const jobs = res.data;
         setJobList(jobs);
       });
-    setTimeout(() => setIsLoading(false), 1000);
+    setTimeout(() => setIsLoading(false), 2000);
   }, []);
 
   return (
