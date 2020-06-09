@@ -22,7 +22,6 @@ function useQuery() {
 export default function Jobs() {
   let history = useHistory();
   let query = useQuery();
-  const [originalList, setoriginalList] = useState([]);
   const handleSearch = (e) => {
     let filteredJobs = [];
 
@@ -30,7 +29,6 @@ export default function Jobs() {
     history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
 
     if (keyword) {
-      setoriginalList(jobList);
       filteredJobs = jobList.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
@@ -38,19 +36,12 @@ export default function Jobs() {
       setJobList(filteredJobs);
     }
   };
-
-  const handleOnChange = (e) => {
-    if (e.target.value === "") {
-      setJobList(originalList);
-      history.replace("/jobs/");
-    }
-    setKeyword(e.target.value);
-  };
   const [jobList, setJobList] = useState([]);
   let [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     // handleSearch();
+    console.log("aaa");
     axios
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
       .then((res) => {
@@ -71,7 +62,7 @@ export default function Jobs() {
         <Form inline>
           <FormControl
             value={keyword}
-            onChange={(e) => handleOnChange(e)}
+            onChange={(e) => setKeyword(e.target.value)}
             type="text"
             placeholder="Search"
             className="mr-sm-2"
@@ -144,6 +135,7 @@ export default function Jobs() {
                 </Row>
               </Col>
             </Row>
+            <hr></hr>
           );
         })}
       </Container>

@@ -42,7 +42,6 @@ export default function Jobs() {
   const handleOnChange = (e) => {
     if (e.target.value === "") {
       setJobList(originalList);
-      history.replace("/jobs/");
     }
     setKeyword(e.target.value);
   };

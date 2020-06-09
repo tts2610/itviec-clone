@@ -22,7 +22,6 @@ function useQuery() {
 export default function Jobs() {
   let history = useHistory();
   let query = useQuery();
-  const [originalList, setoriginalList] = useState([]);
   const handleSearch = (e) => {
     let filteredJobs = [];
 
@@ -30,7 +29,6 @@ export default function Jobs() {
     history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
 
     if (keyword) {
-      setoriginalList(jobList);
       filteredJobs = jobList.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
@@ -41,8 +39,8 @@ export default function Jobs() {
 
   const handleOnChange = (e) => {
     if (e.target.value === "") {
-      setJobList(originalList);
-      history.replace("/jobs/");
+      console.log(jobList);
+      setJobList(jobList);
     }
     setKeyword(e.target.value);
   };
@@ -51,6 +49,7 @@ export default function Jobs() {
 
   useEffect(() => {
     // handleSearch();
+    console.log("aaa");
     axios
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs`)
       .then((res) => {

@@ -22,7 +22,7 @@ function useQuery() {
 export default function Jobs() {
   let history = useHistory();
   let query = useQuery();
-  const [originalList, setoriginalList] = useState([]);
+  const [originalList, setoriginalList] = useState(initialState);
   const handleSearch = (e) => {
     let filteredJobs = [];
 
@@ -41,8 +41,8 @@ export default function Jobs() {
 
   const handleOnChange = (e) => {
     if (e.target.value === "") {
-      setJobList(originalList);
-      history.replace("/jobs/");
+      console.log(jobList);
+      setJobList(jobList);
     }
     setKeyword(e.target.value);
   };
