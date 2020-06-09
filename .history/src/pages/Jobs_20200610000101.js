@@ -181,7 +181,7 @@ export default function Jobs() {
                     )}
                   </Row>
                   <Row>
-                    <h4 className="text-muted">${job.salary}</h4>
+                    <h4>${job.salary}</h4>
                   </Row>
                   <Row
                     className="desRow"

@@ -173,7 +173,7 @@ export default function Jobs() {
                 </Col>
                 <Col sm={9}>
                   <Row style={{ justifyContent: "space-between" }}>
-                    <h2>{job.title}</h2>
+                    <h3>{job.title}</h3>
                     {job.isHotjob && (
                       <Button variant="warning" className="mr-3">
                         Hot job
@@ -181,7 +181,7 @@ export default function Jobs() {
                     )}
                   </Row>
                   <Row>
-                    <h4 className="text-muted">${job.salary}</h4>
+                    <h2>${job.salary}</h2>
                   </Row>
                   <Row
                     className="desRow"
