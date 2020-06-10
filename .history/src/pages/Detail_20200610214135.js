@@ -35,7 +35,7 @@ export default function Detail() {
   const signOut = (e) => {
     e.preventDefault();
     dispatch({ type: "LOGOUT" });
-    history.replace("/");
+    history.pushState("/");
   };
 
   useEffect(() => {
@@ -66,14 +66,13 @@ export default function Detail() {
             fontWeight: "500",
             display: "flex",
             justifyContent: "flex-end",
-            width: "89%",
+            width: "85%",
           }}
-          id="detail-dropDown"
         >
-          <NavDropdown title={user.email}>
+          <NavDropdown title={user.email} id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.2">User Info</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/" onClick={(e) => signOut(e)}>
+            <NavDropdown.Item href="/" onClick={"(e) => signOut(e)"}>
               Sign out
             </NavDropdown.Item>
           </NavDropdown>

@@ -129,7 +129,7 @@ Container {
     color: white;
 }
 
-#detail-dropDown .nav-link {
+.nav-link {
     color: black;
     font-weight: bold;
 }

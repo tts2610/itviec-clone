@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import {
   Container,
@@ -14,7 +14,6 @@ import Moment from "react-moment";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Detail() {
-  let history = useHistory();
   const [job, setJob] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -35,7 +34,7 @@ export default function Detail() {
   const signOut = (e) => {
     e.preventDefault();
     dispatch({ type: "LOGOUT" });
-    history.replace("/");
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -66,14 +65,13 @@ export default function Detail() {
             fontWeight: "500",
             display: "flex",
             justifyContent: "flex-end",
-            width: "89%",
+            width: "85%",
           }}
-          id="detail-dropDown"
         >
-          <NavDropdown title={user.email}>
+          <NavDropdown title={user.email} id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.2">User Info</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/" onClick={(e) => signOut(e)}>
+            <NavDropdown.Item href="/" onClick={"(e) => signOut(e)"}>
               Sign out
             </NavDropdown.Item>
           </NavDropdown>

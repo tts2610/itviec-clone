@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import {
   Container,
@@ -8,18 +8,13 @@ import {
   Button,
   Spinner,
   NavDropdown,
-  Nav,
 } from "react-bootstrap";
 import Moment from "react-moment";
-import { useSelector, useDispatch } from "react-redux";
 
 export default function Detail() {
-  let history = useHistory();
   const [job, setJob] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  const dispatch = useDispatch();
-  let user = useSelector((state) => state.user);
   const getDetailData = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_SERVER_URL}/jobs/${id}`)
@@ -30,12 +25,6 @@ export default function Detail() {
       });
 
     setTimeout(() => setIsLoading(false), 2000);
-  };
-
-  const signOut = (e) => {
-    e.preventDefault();
-    dispatch({ type: "LOGOUT" });
-    history.replace("/");
   };
 
   useEffect(() => {
@@ -60,30 +49,21 @@ export default function Detail() {
     }
     return (
       <>
-        <Nav
-          style={{
-            color: "white",
-            fontWeight: "500",
-            display: "flex",
-            justifyContent: "flex-end",
-            width: "89%",
-          }}
-          id="detail-dropDown"
-        >
-          <NavDropdown title={user.email}>
+        <div>
+          <NavDropdown title="{user.email}" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.2">User Info</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="/" onClick={(e) => signOut(e)}>
+            <NavDropdown.Item href="/" onClick={"(e) => signOut(e)"}>
               Sign out
             </NavDropdown.Item>
           </NavDropdown>
-        </Nav>
+        </div>
         <Container
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "10px",
+            marginTop: "60px",
             marginBottom: "60px",
           }}
         >

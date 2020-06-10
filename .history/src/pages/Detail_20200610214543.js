@@ -68,9 +68,8 @@ export default function Detail() {
             justifyContent: "flex-end",
             width: "89%",
           }}
-          id="detail-dropDown"
         >
-          <NavDropdown title={user.email}>
+          <NavDropdown title={user.email} id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.2">User Info</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="/" onClick={(e) => signOut(e)}>
