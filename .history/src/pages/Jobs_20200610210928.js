@@ -12,7 +12,7 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import Moment from "react-moment";
-import { useHistory, useLocation, Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 const QUERYSTR_PREFIX = "q";
