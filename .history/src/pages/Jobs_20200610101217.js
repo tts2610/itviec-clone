@@ -153,7 +153,7 @@ export default function Jobs() {
       </Navbar>
       {isLoading ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Spinner className="mt-5" animation="border" role="status">
+          <Spinner animation="border" role="status">
             <span className="sr-only"></span>
           </Spinner>
         </div>

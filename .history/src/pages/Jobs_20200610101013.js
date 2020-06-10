@@ -152,13 +152,14 @@ export default function Jobs() {
         </Row>
       </Navbar>
       {isLoading ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Spinner className="mt-5" animation="border" role="status">
-            <span className="sr-only"></span>
-          </Spinner>
-        </div>
-      ) : (
-        <Container className="jobRows  mb-5">
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Spinner animation="border" role="status">
+              <span className="sr-only"></span>
+            </Spinner>
+          </div>
+        ) : (
+      <Container className="jobRows  mb-5">
+      
           {jobList.map((job, index) => {
             return (
               <Row
@@ -223,9 +224,9 @@ export default function Jobs() {
                 </Col>
               </Row>
             );
-          })}
-        </Container>
-      )}
+          })
+        )}
+      </Container>
     </div>
   );
 }
