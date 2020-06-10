@@ -14,7 +14,7 @@ import Moment from "react-moment";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Detail() {
-  let history = useHistory();
+  // let history = useHistory();
   const [job, setJob] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
@@ -35,7 +35,7 @@ export default function Detail() {
   const signOut = (e) => {
     e.preventDefault();
     dispatch({ type: "LOGOUT" });
-    history.replace("/");
+    history.pushState(null, "/");
   };
 
   useEffect(() => {
@@ -71,9 +71,7 @@ export default function Detail() {
           id="detail-dropDown"
         >
           <NavDropdown title={user.email}>
-            <NavDropdown.Item href="#" onClick={() => history.replace("/404")}>
-              User Info
-            </NavDropdown.Item>
+            <NavDropdown.Item href="#action/3.2">User Info</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="/" onClick={(e) => signOut(e)}>
               Sign out

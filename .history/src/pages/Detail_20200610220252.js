@@ -71,9 +71,7 @@ export default function Detail() {
           id="detail-dropDown"
         >
           <NavDropdown title={user.email}>
-            <NavDropdown.Item href="#" onClick={() => history.replace("/404")}>
-              User Info
-            </NavDropdown.Item>
+            <NavDropdown.Item href="/404">User Info</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="/" onClick={(e) => signOut(e)}>
               Sign out

@@ -110,7 +110,10 @@ export default function Jobs() {
             <Nav.Link href="/">Blog</Nav.Link>
             {user.email !== "" ? (
               <NavDropdown title={user.email} id="basic-nav-dropdown">
-                <NavDropdown.Item href="#" onClick={() => history.push("/404")}>
+                <NavDropdown.Item
+                  href="#"
+                  onClick={() => history.replace("/404")}
+                >
                   User Info
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
