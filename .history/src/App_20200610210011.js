@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Jobs from "./pages/Jobs";
 import Login from "./pages/Login";
 import Detail from "./pages/Detail";
-import FourOhFourPage from "./pages/FourOFour";
+import FourOhFourPage from "./pages/404";
 import { useSelector } from "react-redux";
 
 function App() {
