@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 const initialstate = {
   user: { email: "", password: "", isAuthenticated: false },
-  currentId: null,
+  currentId: 0,
 };
 
 function reducer(state = initialstate, action) {
@@ -10,8 +10,6 @@ function reducer(state = initialstate, action) {
     state.user.isAuthenticated = true;
   } else if (action.type === "LOGOUT") {
     state.user = { email: "", password: "", isAuthenticated: false };
-  } else if (action.type === "MOVETOPAGE") {
-    state.currentId = action.payload;
   }
 
   return { ...state };

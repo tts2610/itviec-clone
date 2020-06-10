@@ -12,6 +12,7 @@ function reducer(state = initialstate, action) {
     state.user = { email: "", password: "", isAuthenticated: false };
   } else if (action.type === "MOVETOPAGE") {
     state.currentId = action.payload;
+    console.log(state.currentId);
   }
 
   return { ...state };

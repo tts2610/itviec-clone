@@ -17,8 +17,9 @@ export default function Login() {
     }
     let user = { email: email, password: password };
     dispatch({ type: "LOGIN", payload: user });
-    if (currentID != null) {
-      history.replace(`/jobs/${currentID}`);
+    if (currentID) {
+      alert("aaa");
+      history.push(`/jobs/${currentID}`);
     } else history.push("/");
     // history.goBack();
   };

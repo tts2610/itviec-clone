@@ -15,10 +15,11 @@ export default function Login() {
       alert("please fill in your credentials");
       return;
     }
+    console.log(currentID);
     let user = { email: email, password: password };
     dispatch({ type: "LOGIN", payload: user });
-    if (currentID != null) {
-      history.replace(`/jobs/${currentID}`);
+    if (currentID) {
+      history.push(`/jobs/${currentID}`);
     } else history.push("/");
     // history.goBack();
   };
