@@ -46,9 +46,10 @@ export default function Detail() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "60px",
-          marginBottom: "60px",
+          marginTop: "50px",
+          marginBottom: "50px",
         }}
+        // className="my-5"
       >
         <div className="detail-content py-5 px-5 jobDetails">
           <Row>

@@ -46,11 +46,11 @@ export default function Detail() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: "60px",
-          marginBottom: "60px",
+          height: "100vh",
         }}
+        className="my-5"
       >
-        <div className="detail-content py-5 px-5 jobDetails">
+        <div className="detail-content py-5 px-5">
           <Row>
             <Col sm={3}>
               <img src={process.env.PUBLIC_URL + `${job.img}`} alt="" />
@@ -110,11 +110,13 @@ export default function Detail() {
                 className="desRow"
                 style={{ justifyContent: "space-between" }}
               >
-                <ul>
-                  {job.description.split(". ").map((des, index) => {
-                    return <li key={index}>{des}</li>;
-                  })}
-                </ul>
+                <div>
+                  <ul>
+                    {job.description.split(". ").map((des, index) => {
+                      return <li key={index}>{des}</li>;
+                    })}
+                  </ul>
+                </div>
               </Row>
               <Row className="mt-5">
                 <Button style={{ width: "100%" }} variant="danger">

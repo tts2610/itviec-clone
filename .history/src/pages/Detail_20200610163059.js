@@ -48,7 +48,9 @@ export default function Detail() {
           alignItems: "center",
           marginTop: "60px",
           marginBottom: "60px",
+          minHeight: "30%",
         }}
+        // className="my-5"
       >
         <div className="detail-content py-5 px-5 jobDetails">
           <Row>
