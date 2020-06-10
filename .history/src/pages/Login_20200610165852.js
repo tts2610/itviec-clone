@@ -78,7 +78,7 @@ export default function Login() {
               <Form.Control
                 type="email"
                 placeholder="Enter email"
-                onChange={(e) => (email = e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
@@ -90,7 +90,7 @@ export default function Login() {
               <Form.Control
                 type="password"
                 placeholder="Password"
-                onChange={(e) => (password = e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
             <Button variant="danger" type="submit">
