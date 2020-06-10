@@ -14,10 +14,9 @@ export default function Login() {
       alert("please fill in your credentials");
       return;
     }
-    let user = { email: email, password: password };
+    let user = { email: email, password: password, isAuthenticated: true };
     dispatch({ type: "LOGIN", payload: user });
-    history.push("/");
-    // history.goBack();
+    history.goBack();
   };
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 1500);
@@ -66,10 +65,7 @@ export default function Login() {
             ></img>
             <h1 class="login-title">Login</h1>
           </div>
-          <Form
-            style={{ width: "-webkit-fill-available" }}
-            onSubmit={(e) => login(e)}
-          >
+          <Form style={{ width: "-webkit-fill-available" }}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control

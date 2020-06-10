@@ -13,7 +13,6 @@ import {
 } from "react-bootstrap";
 import Moment from "react-moment";
 import { useHistory, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 const QUERYSTR_PREFIX = "q";
 
@@ -51,11 +50,9 @@ export default function Jobs() {
     setTimeout(() => setIsLoading(false), 1000);
   };
 
-  const signOut = (e) => {
-    e.preventDefault();
-    dispatch({ type: "LOGOUT" });
-    window.location.reload();
-  };
+  const signOut = (e){
+
+  }
 
   const handleOnChange = (e) => {
     if (e.target.value === "") {

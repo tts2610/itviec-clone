@@ -13,7 +13,6 @@ import {
 } from "react-bootstrap";
 import Moment from "react-moment";
 import { useHistory, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 const QUERYSTR_PREFIX = "q";
 
@@ -26,8 +25,7 @@ export default function Jobs() {
   let query = useQuery();
   const [jobList, setJobList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const dispatch = useDispatch();
-  let user = useSelector((state) => state.user);
+  const [user, setUser] = useState(useSelector((state) => state.user));
   let [keyword, setKeyword] = useState(query.get(QUERYSTR_PREFIX));
 
   const handleSearch = (e) => {
@@ -49,12 +47,6 @@ export default function Jobs() {
       setJobList(filteredJobs);
     }
     setTimeout(() => setIsLoading(false), 1000);
-  };
-
-  const signOut = (e) => {
-    e.preventDefault();
-    dispatch({ type: "LOGOUT" });
-    window.location.reload();
   };
 
   const handleOnChange = (e) => {
@@ -108,15 +100,14 @@ export default function Jobs() {
             <Nav.Link href="/">All Jobs</Nav.Link>
             <Nav.Link href="/">IT Companies</Nav.Link>
             <Nav.Link href="/">Blog</Nav.Link>
-            {user.email !== "" ? (
-              <NavDropdown title={user.email} id="basic-nav-dropdown">
+            {user.username !== "" ? (
+              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   User Info
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/" onClick={(e) => signOut(e)}>
-                  Sign out
-                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.4">Sign out</NavDropdown.Item>
               </NavDropdown>
             ) : (
               <Nav.Link href="/login">Sign in</Nav.Link>

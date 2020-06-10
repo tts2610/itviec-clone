@@ -9,7 +9,7 @@ import FourOhFourPage from "./pages/404";
 import { useSelector } from "react-redux";
 
 function App() {
-  let user = useSelector((state) => state.user);
+  const [user, setUser] = useState(useSelector((state) => state.user));
   const ProtectedRoute = (props) => {
     if (user.isAuthenticated) {
       return <Route {...props} />;

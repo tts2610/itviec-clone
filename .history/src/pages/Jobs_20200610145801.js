@@ -13,7 +13,6 @@ import {
 } from "react-bootstrap";
 import Moment from "react-moment";
 import { useHistory, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 const QUERYSTR_PREFIX = "q";
 
@@ -26,7 +25,6 @@ export default function Jobs() {
   let query = useQuery();
   const [jobList, setJobList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const dispatch = useDispatch();
   let user = useSelector((state) => state.user);
   let [keyword, setKeyword] = useState(query.get(QUERYSTR_PREFIX));
 
@@ -49,12 +47,6 @@ export default function Jobs() {
       setJobList(filteredJobs);
     }
     setTimeout(() => setIsLoading(false), 1000);
-  };
-
-  const signOut = (e) => {
-    e.preventDefault();
-    dispatch({ type: "LOGOUT" });
-    window.location.reload();
   };
 
   const handleOnChange = (e) => {

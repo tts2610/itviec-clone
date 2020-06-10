@@ -9,6 +9,7 @@ export default function Login() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const login = (e) => {
+    alert("sss");
     e.preventDefault();
     if (!email || !password) {
       alert("please fill in your credentials");
@@ -16,8 +17,7 @@ export default function Login() {
     }
     let user = { email: email, password: password };
     dispatch({ type: "LOGIN", payload: user });
-    history.push("/");
-    // history.goBack();
+    history.goBack();
   };
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 1500);

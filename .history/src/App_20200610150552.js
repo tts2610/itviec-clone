@@ -7,11 +7,13 @@ import Login from "./pages/Login";
 import Detail from "./pages/Detail";
 import FourOhFourPage from "./pages/404";
 import { useSelector } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 
 function App() {
-  let user = useSelector((state) => state.user);
+  let history = useHistory();
+  const [user, setUser] = useState(useSelector((state) => state.user));
   const ProtectedRoute = (props) => {
-    if (user.isAuthenticated) {
+    if (user.isAuthenticated === true) {
       return <Route {...props} />;
     } else {
       return <Redirect to="/login" />;

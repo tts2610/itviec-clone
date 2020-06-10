@@ -6,18 +6,13 @@ export default function Login() {
   let history = useHistory();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const login = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      alert("please fill in your credentials");
-      return;
-    }
-    let user = { email: email, password: password };
+    let user = { email: email, password: password, isAuthenticated: true };
     dispatch({ type: "LOGIN", payload: user });
-    history.push("/");
-    // history.goBack();
+    history.goBack();
   };
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 1500);
@@ -66,17 +61,10 @@ export default function Login() {
             ></img>
             <h1 class="login-title">Login</h1>
           </div>
-          <Form
-            style={{ width: "-webkit-fill-available" }}
-            onSubmit={(e) => login(e)}
-          >
+          <Form style={{ width: "-webkit-fill-available" }}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <Form.Control type="email" placeholder="Enter email" />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
@@ -84,11 +72,7 @@ export default function Login() {
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <Form.Control type="password" placeholder="Password" />
             </Form.Group>
             <Button variant="danger" type="submit">
               Login

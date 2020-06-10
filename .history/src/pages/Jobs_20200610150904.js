@@ -21,8 +21,7 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 let originalList = [];
-export default function Jobs() {
-  let history = useHistory();
+export default function Jobs({ history }) {
   let query = useQuery();
   const [jobList, setJobList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

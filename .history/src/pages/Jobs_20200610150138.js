@@ -54,7 +54,7 @@ export default function Jobs() {
   const signOut = (e) => {
     e.preventDefault();
     dispatch({ type: "LOGOUT" });
-    window.location.reload();
+    window.location.reload()''
   };
 
   const handleOnChange = (e) => {

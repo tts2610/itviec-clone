@@ -16,7 +16,6 @@ export default function Login() {
     }
     let user = { email: email, password: password };
     dispatch({ type: "LOGIN", payload: user });
-    history.push("/");
     // history.goBack();
   };
   useEffect(() => {

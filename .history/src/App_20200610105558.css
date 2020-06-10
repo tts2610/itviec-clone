@@ -19,13 +19,11 @@ body {
     }
 }
 
-
-/* 
 @media screen and (max-width: 600px) {
-    nav {
-        height: 600px;
+    body {
+        scale: 0.5;
     }
-} */
+}
 
 .App-header {
     background-color: #282c34;
@@ -52,7 +50,7 @@ body {
 }
 
 .desRow div ul li {
-    width: 350px;
+    width: 650px;
     text-overflow: ellipsis;
     list-style-type: circle;
 }
@@ -106,16 +104,4 @@ Container {
 
 .jobRows {
     background-color: white;
-}
-
-.login-title-box {
-    align-items: center;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: -webkit-fill-available;
-    color: white
 }

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button, Spinner, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
-export default function Login() {
-  let history = useHistory();
+export default function Login({ history }) {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState(null);
@@ -16,8 +15,8 @@ export default function Login() {
     }
     let user = { email: email, password: password };
     dispatch({ type: "LOGIN", payload: user });
-    history.push("/");
-    // history.goBack();
+    // history.push("/");
+    history.goBack();
   };
   useEffect(() => {
     setTimeout(() => setIsLoading(false), 1500);
